@@ -1,0 +1,21 @@
+<%- include("partials/header") %> 
+
+<!--Urls List within Container-->
+<div class="container">
+    <% shortUrls.forEach(element => {%>
+        <div class="url-item">
+            <span id="shortUrl">ShortUrl: <a href="#"><%=element.short%></a></span>
+            <span id="date">Date Created: <strong><%=element.created.toDateString()%></strong></span>
+            <span id="visits">Visits: <strong><%=element.visits%></strong></span>
+            <hr style="margin-top: 15px;">
+            <div id="baseUrl"><%=element.base%></div>
+            <div class="delete-btn-div">
+                <button id="delete-btn">Delete</button>
+            </div>
+        </div>
+    <%});%>
+</div>
+
+
+
+<%- include("partials/footer") %> 
