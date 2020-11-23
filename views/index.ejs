@@ -12,7 +12,9 @@
                 <a href="<%=element.base%>"><%=element.base%></a>
             </div>
             <div class="delete-btn-div">
-                <button id="delete-btn">Delete</button>
+                <form action="/<%=element.short%>?_method=DELETE" method="POST">
+                    <button id="delete-btn" type="submit">Delete</button>
+                </form>
             </div>
         </div>
     <%});%>
