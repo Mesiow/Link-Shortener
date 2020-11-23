@@ -20,7 +20,7 @@ app.use(express.urlencoded({extended: false}));
 
 //Url list route
 app.get('/', async (req, res) => {
-    const shortUrls = await ShortUrl.find({});
+    const shortUrls = await ShortUrl.find({}); //find all short url models
     res.render("index", {shortUrls: shortUrls});
 });
 
@@ -30,10 +30,24 @@ app.get("/newUrl", (req, res) => {
 });
 
 
-app.post("/", async (req, res) => {
+app.post("/shortUrls", async (req, res) => {
     await ShortUrl.create({base: req.body.url});
     res.redirect("/");
 });
+
+app.get("/:shortUrl", async (req, res) => {
+    //find short url based on url param
+    const shortUrl = await ShortUrl.findOne({short: req.params.shortUrl});
+    console.log("Short Url: " + req.params.shortUrl);
+    if(!shortUrl) //url not found
+        return res.sendStatus(404);
+
+    shortUrl.visits++;
+    shortUrl.save();
+
+    //redirect to original url
+    res.redirect(shortUrl.base);
+})
 
 
 const port = process.env.PORT || 4000;
