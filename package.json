@@ -11,13 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.10.14",
     "shortid": "^2.2.16"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.6"
-  }
+  "devDependencies": {}
 }

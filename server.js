@@ -5,7 +5,10 @@ const ShortUrl = require("./models/shortUrl");
 const app = express();
 var bodyParser = require("body-parser");
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/urlShortener', {
+const env = require("./config");
+
+mongoose.connect(`mongodb+srv://Chris:${env.DB_ATLAS_PASS}@cluster0.hb2s2.mongodb.net/<dbname>?retryWrites=true&w=majority`
+     || env.LOCAL_DB_URL, {
     useNewUrlParser: true, useUnifiedTopology: true
 });
 
