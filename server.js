@@ -7,8 +7,8 @@ var bodyParser = require("body-parser");
 
 const env = require("./config");
 
-var url = `mongodb+srv://Chris:${env.DB_ATLAS_PASS}@cluster0.hb2s2.mongodb.net/urlShortener?retryWrites=true&w=majority`;
-mongoose.connect(url || env.LOCAL_DB_URL, {
+
+mongoose.connect(process.env.MONGODB_URI || env.LOCAL_DB_URL, {
     useNewUrlParser: true, useUnifiedTopology: true
 });
 
